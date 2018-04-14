@@ -71,14 +71,16 @@ class CookieBarSiteConfig extends DataExtension {
         $TopField = CheckboxField::create('Top', _t("CookieBarSiteConfig.TOP", "Show cookieBAR on top"));
         $TopField->setDescription(_t("CookieBarSiteConfig.TOP_DESCRIPTION", "(by default cookiebar is at the bottom of the website)"));
         $ShowNoConsentField = CheckboxField::create('ShowNoConsent', _t("CookieBarSiteConfig.SHOWNOCONSENT", "Show DENY button"));
-        $HideDetailsBtnField = CheckboxField::create('HideDetailsBtn', _t("CookieBarSiteConfig.HIDEDETAILSBTN", "HideDetailsBtn"));
+        $HideDetailsBtnField = CheckboxField::create('HideDetailsBtn', _t("CookieBarSiteConfig.HIDEDETAILSBTN", "Hide the Details link"));
         $BlockingField = CheckboxField::create('Blocking', _t("CookieBarSiteConfig.BLOCKING", "Blocking"));
+        $BlockingFieldsetDescription(_t("CookieBarSiteConfig.BLOCKING_DESCRIPTION", "(forces a visitor to select whether to accept or decline cookies)"));
         $ForceLangField = DropdownField::create('ForceLang', _t("CookieBarSiteConfig.FORCELANG", "Language"), $ForceLangSource);
         $ForceLangField->setEmptyString(_t("CookieBarSiteConfig.AUTODETECT", "Autodetect"));
         $ForceLangField->setDescription(_t("CookieBarSiteConfig.FORCELANG_DESCRIPTION", "(use language autodetection or force a specific language)"));
         $ThemeField = DropdownField::create('Theme', _t("CookieBarSiteConfig.THEME", "Theme"), $ThemeSource);
         $ThemeField->setEmptyString(_t("CookieBarSiteConfig.DEFAULT_BLACK", "Default (black)"));
-        $RememberField = NumericField::create('Remember', _t("CookieBarSiteConfig.REMEMBER", "Remember"));
+        $RememberField = NumericField::create('Remember', _t("CookieBarSiteConfig.REMEMBER", "Remember choice for X days"));
+        $RememberField->setDescription(_t("CookieBarSiteConfig.REMEMBER_DESCRIPTION", "(default 30 days, if you leave it empty or set 0, it will be 30 days)"));
 
         $fields->addFieldsToTab("Root."._t("CookieBarSiteConfig.COOKIEBAR", "CookieBAR"), array(
             $TrackingField,
