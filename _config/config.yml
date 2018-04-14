@@ -5,3 +5,7 @@ name: cookiebar
 PageController:
   extensions:
     - Hestec\CookieBar\CookieBar
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - Hestec\CookieBar\CookieBarSiteConfig
