@@ -2,15 +2,18 @@
 
 namespace Hestec\CookieBar;
 
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 
 class CookieBarSiteConfig extends DataExtension {
 
     private static $db = array(
+        'CbEnable' => 'Boolean',
         'CbTracking' => 'Boolean',
         'CbThirdParty' => 'Boolean',
         'CbAlways' => 'Boolean',
@@ -27,7 +30,7 @@ class CookieBarSiteConfig extends DataExtension {
     );
 
     private static $has_one = array(
-        'PrivacyPage' => SiteTree::class
+        'CbPrivacyPage' => SiteTree::class
     );
 
     public function updateCMSFields(FieldList $fields)
@@ -60,6 +63,9 @@ class CookieBarSiteConfig extends DataExtension {
             'white' => _t("CookieBarSiteConfig.THICK_WHITE", "Thick white")
         );
 
+        $SiteTreeSource = SiteTree::class;
+
+        $EnableField = CheckboxField::create('CbEnable', _t("CookieBarSiteConfig.ENABLE", "Enable CookieBAR"));
         $TrackingField = CheckboxField::create('CbTracking', _t("CookieBarSiteConfig.TRACKING", "The website uses tracking cookies"));
         $ThirdPartyField = CheckboxField::create('CbThirdParty', _t("CookieBarSiteConfig.THIRDPARTY", "The website uses third party cookies"));
         $AlwaysField = CheckboxField::create('CbAlways', _t("CookieBarSiteConfig.ALWAYS", "Always show cookieBAR"));
@@ -81,8 +87,10 @@ class CookieBarSiteConfig extends DataExtension {
         $ThemeField->setEmptyString(_t("CookieBarSiteConfig.DEFAULT_BLACK", "Default (black)"));
         $RememberField = NumericField::create('CbRemember', _t("CookieBarSiteConfig.REMEMBER", "Remember choice for X days"));
         $RememberField->setDescription(_t("CookieBarSiteConfig.REMEMBER_DESCRIPTION", "(default 30 days, if you leave it empty or set 0, it will be 30 days)"));
+        $PrivacyPageField = TreeDropdownField::create('CbPrivacyPageID', _t("CookieBarSiteConfig.PRIVACYPAGE", "PrivacyPage"), $SiteTreeSource);
 
         $fields->addFieldsToTab("Root."._t("CookieBarSiteConfig.COOKIEBAR", "CookieBAR"), array(
+            $EnableField,
             $TrackingField,
             $ThirdPartyField,
             $AlwaysField,
@@ -95,13 +103,14 @@ class CookieBarSiteConfig extends DataExtension {
             $BlockingField,
             $ForceLangField,
             $ThemeField,
-            $RememberField
+            $RememberField,
+            $PrivacyPageField
         ));
 
 
     }
 
-    public function Options(){
+    public function CbOptions(){
 
         $array = array();
 
@@ -143,6 +152,9 @@ class CookieBarSiteConfig extends DataExtension {
         }
         if ($this->owner->CbForceLang){
             $array['forceLang'] = $this->owner->CbForceLang;
+        }
+        if ($this->owner->CbPrivacyPageID){
+            $array['privacyPage'] = $this->owner->CbPrivacyPage()->AbsoluteLink();
         }
 
         return $array;

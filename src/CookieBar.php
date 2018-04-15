@@ -13,14 +13,16 @@ class CookieBar extends Extension
     public function onAfterInit(){
 
         $siteConfig = SiteConfig::current_site_config();
-        if (http_build_query($siteConfig->Options())){
+        if ($siteConfig->CbEnable) {
+            if (http_build_query($siteConfig->CbOptions())) {
 
-            Requirements::javascript("https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?".http_build_query($siteConfig->Options()));
+                Requirements::javascript("https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?" . http_build_query($siteConfig->CbOptions()));
 
-        }else{
+            } else {
 
-            Requirements::javascript("https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js");
+                Requirements::javascript("https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js");
 
+            }
         }
 
     }
