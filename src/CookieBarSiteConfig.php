@@ -11,19 +11,19 @@ use SilverStripe\Forms\FieldList;
 class CookieBarSiteConfig extends DataExtension {
 
     private static $db = array(
-        'Tracking' => 'Boolean',
-        'ThirdParty' => 'Boolean',
-        'Always' => 'Boolean',
-        'NoGeoIp' => 'Boolean',
-        'Scrolling' => 'Boolean',
-        'RefreshPage' => 'Boolean',
-        'Top' => 'Boolean',
-        'ShowNoConsent' => 'Boolean',
-        'HideDetailsBtn' => 'Boolean',
-        'Blocking' => 'Boolean',
-        'ForceLang' => 'Varchar(2)',
-        'Theme' => 'Varchar(20)',
-        'Remember' => 'Int'
+        'CbTracking' => 'Boolean',
+        'CbThirdParty' => 'Boolean',
+        'CbAlways' => 'Boolean',
+        'CbNoGeoIp' => 'Boolean',
+        'CbScrolling' => 'Boolean',
+        'CbRefreshPage' => 'Boolean',
+        'CbTop' => 'Boolean',
+        'CbShowNoConsent' => 'Boolean',
+        'CbHideDetailsBtn' => 'Boolean',
+        'CbBlocking' => 'Boolean',
+        'CbForceLang' => 'Varchar(2)',
+        'CbTheme' => 'Varchar(20)',
+        'CbRemember' => 'Int'
     );
 
     private static $has_one = array(
@@ -60,26 +60,26 @@ class CookieBarSiteConfig extends DataExtension {
             'white' => _t("CookieBarSiteConfig.THICK_WHITE", "Thick white")
         );
 
-        $TrackingField = CheckboxField::create('Tracking', _t("CookieBarSiteConfig.TRACKING", "The website uses tracking cookies"));
-        $ThirdPartyField = CheckboxField::create('ThirdParty', _t("CookieBarSiteConfig.THIRDPARTY", "The website uses third party cookies"));
-        $AlwaysField = CheckboxField::create('Always', _t("CookieBarSiteConfig.ALWAYS", "Always show cookieBAR"));
+        $TrackingField = CheckboxField::create('CbTracking', _t("CookieBarSiteConfig.TRACKING", "The website uses tracking cookies"));
+        $ThirdPartyField = CheckboxField::create('CbThirdParty', _t("CookieBarSiteConfig.THIRDPARTY", "The website uses third party cookies"));
+        $AlwaysField = CheckboxField::create('CbAlways', _t("CookieBarSiteConfig.ALWAYS", "Always show cookieBAR"));
         $AlwaysField->setDescription(_t("CookieBarSiteConfig.ALWAYS_DESCRIPTION", "(show cookieBAR even if no cookies are detected)"));
-        $NoGeoIpField = CheckboxField::create('NoGeoIp', _t("CookieBarSiteConfig.NOGEOIP", "No GeoIP lookup"));
+        $NoGeoIpField = CheckboxField::create('CbNoGeoIp', _t("CookieBarSiteConfig.NOGEOIP", "No GeoIP lookup"));
         $NoGeoIpField->setDescription(_t("CookieBarSiteConfig.NOGEOIP_DESCRIPTION", "(show cookieBAR regardless of the user's location)"));
-        $ScrollingField = CheckboxField::create('Scrolling', _t("CookieBarSiteConfig.SCROLLING", "Accept cookies by scrolling window"));
-        $RefreshPageField = CheckboxField::create('RefreshPage', _t("CookieBarSiteConfig.REFRESHPAGE", "Refresh page on CookieAllowed"));
-        $TopField = CheckboxField::create('Top', _t("CookieBarSiteConfig.TOP", "Show cookieBAR on top"));
+        $ScrollingField = CheckboxField::create('CbScrolling', _t("CookieBarSiteConfig.SCROLLING", "Accept cookies by scrolling window"));
+        $RefreshPageField = CheckboxField::create('CbRefreshPage', _t("CookieBarSiteConfig.REFRESHPAGE", "Refresh page on CookieAllowed"));
+        $TopField = CheckboxField::create('CbTop', _t("CookieBarSiteConfig.TOP", "Show cookieBAR on top"));
         $TopField->setDescription(_t("CookieBarSiteConfig.TOP_DESCRIPTION", "(by default cookiebar is at the bottom of the website)"));
-        $ShowNoConsentField = CheckboxField::create('ShowNoConsent', _t("CookieBarSiteConfig.SHOWNOCONSENT", "Show DENY button"));
-        $HideDetailsBtnField = CheckboxField::create('HideDetailsBtn', _t("CookieBarSiteConfig.HIDEDETAILSBTN", "Hide the Details link"));
-        $BlockingField = CheckboxField::create('Blocking', _t("CookieBarSiteConfig.BLOCKING", "Blocking"));
-        $BlockingFieldsetDescription(_t("CookieBarSiteConfig.BLOCKING_DESCRIPTION", "(forces a visitor to select whether to accept or decline cookies)"));
-        $ForceLangField = DropdownField::create('ForceLang', _t("CookieBarSiteConfig.FORCELANG", "Language"), $ForceLangSource);
+        $ShowNoConsentField = CheckboxField::create('CbShowNoConsent', _t("CookieBarSiteConfig.SHOWNOCONSENT", "Show DENY button"));
+        $HideDetailsBtnField = CheckboxField::create('CbHideDetailsBtn', _t("CookieBarSiteConfig.HIDEDETAILSBTN", "Hide the Details link"));
+        $BlockingField = CheckboxField::create('CbBlocking', _t("CookieBarSiteConfig.BLOCKING", "Blocking"));
+        $BlockingField->setDescription(_t("CookieBarSiteConfig.BLOCKING_DESCRIPTION", "(forces a visitor to select whether to accept or decline cookies)"));
+        $ForceLangField = DropdownField::create('CbForceLang', _t("CookieBarSiteConfig.FORCELANG", "Language"), $ForceLangSource);
         $ForceLangField->setEmptyString(_t("CookieBarSiteConfig.AUTODETECT", "Autodetect"));
         $ForceLangField->setDescription(_t("CookieBarSiteConfig.FORCELANG_DESCRIPTION", "(use language autodetection or force a specific language)"));
-        $ThemeField = DropdownField::create('Theme', _t("CookieBarSiteConfig.THEME", "Theme"), $ThemeSource);
+        $ThemeField = DropdownField::create('CbTheme', _t("CookieBarSiteConfig.THEME", "Theme"), $ThemeSource);
         $ThemeField->setEmptyString(_t("CookieBarSiteConfig.DEFAULT_BLACK", "Default (black)"));
-        $RememberField = NumericField::create('Remember', _t("CookieBarSiteConfig.REMEMBER", "Remember choice for X days"));
+        $RememberField = NumericField::create('CbRemember', _t("CookieBarSiteConfig.REMEMBER", "Remember choice for X days"));
         $RememberField->setDescription(_t("CookieBarSiteConfig.REMEMBER_DESCRIPTION", "(default 30 days, if you leave it empty or set 0, it will be 30 days)"));
 
         $fields->addFieldsToTab("Root."._t("CookieBarSiteConfig.COOKIEBAR", "CookieBAR"), array(
@@ -105,44 +105,44 @@ class CookieBarSiteConfig extends DataExtension {
 
         $array = array();
 
-        if ($this->owner->Tracking){
+        if ($this->owner->CbTracking){
             $array['tracking'] = 1;
         }
-        if ($this->owner->ThirdParty){
+        if ($this->owner->CbThirdParty){
             $array['thirdparty'] = 1;
         }
-        if ($this->owner->Always){
+        if ($this->owner->CbAlways){
             $array['always'] = 1;
         }
-        if ($this->owner->NoGeoIp){
+        if ($this->owner->CbNoGeoIp){
             $array['noGeoIp'] = 1;
         }
-        if ($this->owner->Scrolling){
+        if ($this->owner->CbScrolling){
             $array['scrolling'] = 1;
         }
-        if ($this->owner->RefreshPage){
+        if ($this->owner->CbRefreshPage){
             $array['refreshPage'] = 1;
         }
-        if ($this->owner->Top){
+        if ($this->owner->CbTop){
             $array['top'] = 1;
         }
-        if ($this->owner->ShowNoConsent){
+        if ($this->owner->CbShowNoConsent){
             $array['showNoConsent'] = 1;
         }
-        if ($this->owner->HideDetailsBtn){
+        if ($this->owner->CbHideDetailsBtn){
             $array['hideDetailsBtn'] = 1;
         }
-        if ($this->owner->Blocking){
+        if ($this->owner->CbBlocking){
             $array['blocking'] = 1;
         }
-        if ($this->owner->Remember <> 30 && $this->owner->Remember > 0){
-            $array['remember'] = $this->owner->Remember;
+        if ($this->owner->CbRemember <> 30 && $this->owner->CbRemember > 0){
+            $array['remember'] = $this->owner->CbRemember;
         }
-        if ($this->owner->Theme){
-            $array['theme'] = $this->owner->Theme;
+        if ($this->owner->CbTheme){
+            $array['theme'] = $this->owner->CbTheme;
         }
-        if ($this->owner->ForceLang){
-            $array['forceLang'] = $this->owner->ForceLang;
+        if ($this->owner->CbForceLang){
+            $array['forceLang'] = $this->owner->CbForceLang;
         }
 
         return $array;
