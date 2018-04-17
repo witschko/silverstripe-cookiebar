@@ -6,6 +6,9 @@ For more information see:
 * https://cookie-bar.eu
 * https://github.com/ToX82/cookie-bar.
 
+_Example:_
+![config](https://res.cloudinary.com/hestec/image/upload/v1523968962/silverstripe-cookiebar/bar-example.jpg)
+
 ### What this module does ###
 
 It adds the CookieBar javascript to your website using CDN and it adds a CookieBAR section to the config in the CMS. Here you can enable/disable the CookieBAR and customize the behaviour and appearance if you want.
@@ -30,7 +33,7 @@ composer require "hestec/silverstripe-cookiebar": "1.*"
 
 After installation go to the CookieBAR tab in the CMS settings and check enable.
 
-![config](http://res.cloudinary.com/hestec/image/upload/v1523968405/silverstripe-cookiebar/config.jpg)
+![config](https://res.cloudinary.com/hestec/image/upload/v1523968405/silverstripe-cookiebar/config.jpg)
 
 ### Todo/Issues ###
 
