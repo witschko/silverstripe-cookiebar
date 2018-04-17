@@ -12,3 +12,26 @@ It adds the CookieBar javascript to your website using CDN and it adds a CookieB
 
 For example: if you want to show the text of CookieBAR always in a specific language or show the bar also in countries outside the EU, you can set this in the config section.
 
+### Requirements ###
+
+SilverStripe 4
+
+### Version ###
+
+Using Semantic Versioning.
+
+### Installation ###
+
+Install via Composer:
+
+composer require "hestec/silverstripe-cookiebar": "1.*"
+
+### Usage ###
+
+After installation go to the CookieBAR tab in the CMS settings and check enable.
+
+![alt text](docs/screenshots/config.jpg)
+
+### Todo/Issues ###
+
+No known issues. For ideas or issues contact us.
