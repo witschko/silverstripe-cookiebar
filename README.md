@@ -30,7 +30,7 @@ composer require "hestec/silverstripe-cookiebar": "1.*"
 
 After installation go to the CookieBAR tab in the CMS settings and check enable.
 
-![alt text](docs/screenshots/config.jpg)
+![config](http://res.cloudinary.com/hestec/image/upload/v1523968405/silverstripe-cookiebar/config.jpg)
 
 ### Todo/Issues ###
 
