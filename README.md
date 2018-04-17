@@ -7,7 +7,7 @@ For more information see:
 * https://github.com/ToX82/cookie-bar.
 
 _Example:_
-![config](https://res.cloudinary.com/hestec/image/upload/v1523968962/silverstripe-cookiebar/bar-example.jpg)
+![example](https://res.cloudinary.com/hestec/image/upload/v1523968962/silverstripe-cookiebar/bar-example.jpg)
 
 ### What this module does ###
 
