@@ -1,2 +1,2 @@
-# silverstripe-cookiebar
+# SilverStripe plugin for CookieBAR EU
 
